@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @create 2020-10-02-21:05
  */
 @Aspect
+@Component
 public class TimerAspect {
 
     public static Map<String, CopyOnWriteArrayList<String>> METHOD_EXECUTION_TIME = new ConcurrentHashMap<>();
