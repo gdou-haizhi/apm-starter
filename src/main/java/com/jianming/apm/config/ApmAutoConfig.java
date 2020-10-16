@@ -1,9 +1,10 @@
 package com.jianming.apm.config;
 
-import com.jianming.apm.aspect.TimerAspect;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Controller;
 
 /**
  * apm 配置类
@@ -11,11 +12,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @EnableAspectJAutoProxy
 @Configuration
+@ComponentScan(value = "com.jianming.apm",
+        includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})},
+        useDefaultFilters = false)
 public class ApmAutoConfig {
-
-    @Bean
-    public TimerAspect timerAspect() {
-        return new TimerAspect();
-    }
 
 }
